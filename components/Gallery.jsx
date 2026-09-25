@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
+const BASE_PATH = "/Tomnow-studios";
+
 const STILLS = [
-  { label: "Catering Setup", src: "/reel/catering-setup.jpg" },
-  { label: "Event Portrait", src: "/reel/event-portrait.jpg" },
-  { label: "Floral Chandelier", src: "/reel/floral-chandelier.jpg" },
-  { label: "Welcome Board", src: "/reel/welcome-board.jpg" },
+  { label: "Catering Setup", src: `${BASE_PATH}/reel/catering-setup.jpg` },
+  { label: "Event Portrait", src: `${BASE_PATH}/reel/event-portrait.jpg` },
+  { label: "Floral Chandelier", src: `${BASE_PATH}/reel/floral-chandelier.jpg` },
+  { label: "Welcome Board", src: `${BASE_PATH}/reel/welcome-board.jpg` },
 ];
 
 export default function Gallery() {
@@ -68,13 +69,11 @@ export default function Gallery() {
               key={still.label}
               className="relative flex h-[52vh] w-[78vw] flex-none flex-col justify-end overflow-hidden rounded-lg md:h-[60vh] md:w-[38vw]"
             >
-              <Image
+              <img
                 src={still.src}
                 alt={still.label}
-                fill
-                sizes="(max-width: 768px) 78vw, 38vw"
-                className="object-cover"
-                priority
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <p className="relative z-10 p-6 font-display text-xl italic text-paper md:text-2xl">
@@ -103,4 +102,3 @@ export default function Gallery() {
     </section>
   );
 }
-

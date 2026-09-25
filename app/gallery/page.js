@@ -1,22 +1,23 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
+const BASE_PATH = "/Tomnow-studios";
+
 const GALLERY_IMAGES = [
-  { src: "/gallery/welcome-board.jpg", alt: "Welcome Board — Debra & Hosea Koito", aspect: "landscape" },
-  { src: "/gallery/speaker-presentation.jpg", alt: "Speaker at Création Africa", aspect: "portrait" },
-  { src: "/gallery/bride-celebration.jpg", alt: "Bride Celebration", aspect: "landscape" },
-  { src: "/gallery/catering-setup.jpg", alt: "Gold Catering Setup", aspect: "landscape" },
-  { src: "/gallery/event-portrait.jpg", alt: "Event Portrait", aspect: "portrait" },
-  { src: "/gallery/bridal-party.jpg", alt: "Bridal Party", aspect: "portrait" },
-  { src: "/gallery/floral-chandelier.jpg", alt: "Floral & Wicker Chandelier", aspect: "landscape" },
-  { src: "/gallery/ceremony-guests.jpg", alt: "Ceremony Guests", aspect: "landscape" },
-  { src: "/gallery/guest-portrait.jpg", alt: "Guest Portrait", aspect: "landscape" },
-  { src: "/gallery/guests-dinner.jpg", alt: "Guests at Dinner", aspect: "landscape" },
-  { src: "/gallery/event-portrait-2.jpg", alt: "Event Portrait", aspect: "portrait" },
-  { src: "/gallery/catering-setup-2.jpg", alt: "Catering Display", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/welcome-board.jpg`, alt: "Welcome Board — Debra & Hosea Koito", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/speaker-presentation.jpg`, alt: "Speaker at Création Africa", aspect: "portrait" },
+  { src: `${BASE_PATH}/gallery/bride-celebration.jpg`, alt: "Bride Celebration", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/catering-setup.jpg`, alt: "Gold Catering Setup", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/event-portrait.jpg`, alt: "Event Portrait", aspect: "portrait" },
+  { src: `${BASE_PATH}/gallery/bridal-party.jpg`, alt: "Bridal Party", aspect: "portrait" },
+  { src: `${BASE_PATH}/gallery/floral-chandelier.jpg`, alt: "Floral & Wicker Chandelier", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/ceremony-guests.jpg`, alt: "Ceremony Guests", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/guest-portrait.jpg`, alt: "Guest Portrait", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/guests-dinner.jpg`, alt: "Guests at Dinner", aspect: "landscape" },
+  { src: `${BASE_PATH}/gallery/event-portrait-2.jpg`, alt: "Event Portrait", aspect: "portrait" },
+  { src: `${BASE_PATH}/gallery/catering-setup-2.jpg`, alt: "Catering Display", aspect: "landscape" },
 ];
 
 export default function GalleryPage() {
@@ -121,13 +122,11 @@ export default function GalleryPage() {
               }}
             >
               <div className="relative overflow-hidden rounded-lg">
-                <Image
+                <img
                   src={img.src}
                   alt={img.alt}
-                  width={800}
-                  height={img.aspect === "portrait" ? 1100 : 550}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-auto object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
@@ -218,14 +217,10 @@ export default function GalleryPage() {
             className="relative max-w-[90vw] max-h-[85vh] animate-lightbox-in"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
+            <img
               src={GALLERY_IMAGES[lightbox].src}
               alt={GALLERY_IMAGES[lightbox].alt}
-              width={1200}
-              height={GALLERY_IMAGES[lightbox].aspect === "portrait" ? 1600 : 800}
-              sizes="90vw"
               className="max-h-[85vh] w-auto h-auto object-contain rounded-lg"
-              priority
             />
             <p className="absolute bottom-0 left-0 right-0 text-center py-4 font-body text-sm text-paper/60 bg-gradient-to-t from-ink/50 to-transparent rounded-b-lg">
               {GALLERY_IMAGES[lightbox].alt}

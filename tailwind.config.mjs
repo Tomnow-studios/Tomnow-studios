@@ -16,8 +16,8 @@ export default {
         flare: "#E8C468",    // warm glint accent, used sparingly
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        display: ["'Fraunces'", "serif"],
+        body: ["'Inter'", "sans-serif"],
       },
     },
   },

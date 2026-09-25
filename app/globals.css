@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #0b3538;
+}
+
+body {
+  background-color: #edeae2;
+  color: #1c1c1a;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #b3182a;
+  color: #edeae2;
+}
+
+/* Lenis smooth scroll requirements */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.frame-rule {
+  border-top: 1px solid rgba(28, 28, 26, 0.15);
+}
+
+.frame-rule-dark {
+  border-top: 1px solid rgba(237, 234, 226, 0.15);
+}
+
+/* focus visibility kept intentional and visible */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #b3182a;
+  outline-offset: 3px;
+}
+
+/* Gallery lightbox animation */
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-lightbox-in {
+  animation: lightbox-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
